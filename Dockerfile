@@ -39,7 +39,8 @@ RUN \
   rm -f *.deb
 
 # install sbt
-COPY repositories /root/.sbt/repositories
 RUN \
   apt-get install sbt && \
-  sbt ++2.11.7 clean updateClassifiers compile
+  sbt ++2.11.7 clean updateClassifiers compile && \
+  rm -rf /root/target
+COPY repositories /root/.sbt/repositories
